@@ -2,6 +2,7 @@
 
 #include "../Blocks.h"
 #include "NoiseGenerator.h"
+#include <SFML/Graphics.hpp>
 
 class Region;
 
@@ -13,6 +14,8 @@ public:
 	BlockID getBlockAt(int x, int z);
 	int getHeightAt(int x, int z);
 
+	sf::Color getColourAt(int x, int z);
+
 private:
 
 	void setupGenerators();
@@ -21,7 +24,9 @@ private:
 	Region* _currentRegion;
 
 	NoiseGenerator _dampnessMap;
+	NoiseGenerator _heatMap;
 	NoiseGenerator _mainHeightmap;
 	NoiseGenerator _treeMap;
+	NoiseGenerator _riverMap;
 
 };

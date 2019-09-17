@@ -1,5 +1,5 @@
 #include "Application.h"
-
+#include "Terrain/BlockTypeDatabase.h"
 
 Application::Application()
 {
@@ -12,13 +12,7 @@ void Application::runLoop()
 
 	for(int x = 0; x < 1000; x++){
 		for (int z = 0; z < 1000; z++) {
-
-			int height = _worldTerrain.getHeightAt(x, z);
-
-			if (height < 80)
-				imageBuffer.setPixel(x, z, sf::Color(0, 0, 255));
-			else
-				imageBuffer.setPixel(x, z, sf::Color(0, _worldTerrain.getHeightAt(x, z), 0));
+			imageBuffer.setPixel(x, z, _worldTerrain.getColourAt(x * 2, z * 2));
 		}
 	}
 
