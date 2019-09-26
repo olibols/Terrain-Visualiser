@@ -23,10 +23,6 @@ private:
 	int _seed;
 	Region* _currentRegion;
 
-	NoiseGenerator _dampnessMap;
-	NoiseGenerator _heatMap;
 	NoiseGenerator _mainHeightmap;
-	NoiseGenerator _treeMap;
-	NoiseGenerator _riverMap;
 
 };
