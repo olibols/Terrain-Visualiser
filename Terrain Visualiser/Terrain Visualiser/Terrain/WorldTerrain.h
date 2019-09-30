@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../Blocks.h"
+#include "../NoiseGenerators/PerlinNoise.h"
+
 #include <SFML/Graphics.hpp>
 
 class Region;
@@ -21,5 +23,7 @@ private:
 
 	int _seed;
 	Region* _currentRegion;
+
+	PerlinNoise _mainHeightmap;
 
 };

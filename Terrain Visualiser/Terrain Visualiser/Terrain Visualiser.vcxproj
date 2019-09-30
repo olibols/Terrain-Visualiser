@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NoiseGenerators\PerlinNoise.cpp" />
     <ClCompile Include="Terrain\BlockTypeDatabase.cpp" />
     <ClCompile Include="NoiseGenerators\NoiseGenerator.cpp" />
     <ClCompile Include="Terrain\WorldTerrain.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Blocks.h" />
+    <ClInclude Include="NoiseGenerators\PerlinNoise.h" />
     <ClInclude Include="Terrain\BlockTypeDatabase.h" />
     <ClInclude Include="NoiseGenerators\NoiseGenerator.h" />
     <ClInclude Include="Terrain\WorldTerrain.h" />
