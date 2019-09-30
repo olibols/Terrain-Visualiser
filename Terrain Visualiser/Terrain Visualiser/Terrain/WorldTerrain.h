@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Blocks.h"
-#include "NoiseGenerator.h"
 #include <SFML/Graphics.hpp>
 
 class Region;
@@ -22,7 +21,5 @@ private:
 
 	int _seed;
 	Region* _currentRegion;
-
-	NoiseGenerator _mainHeightmap;
 
 };
