@@ -11,14 +11,14 @@ _mainHeightmap(_seed)
 
 BlockID WorldTerrain::getBlockAt(int x, int z)
 {
-	int height = _mainHeightmap.GetValue(x, z, 0);
+	int height = (_mainHeightmap.GetValue(x, z) + 1) * 200;
 
 	return BlockID::Grass;
 }
 
 int WorldTerrain::getHeightAt(int x, int z)
 {
-	int height = ((_mainHeightmap.GetValue(x, z, 0) + 1) * 200);
+	int height = _mainHeightmap.GetValue(x, z);
 
 	return height;
 }
@@ -30,17 +30,16 @@ sf::Color WorldTerrain::getColourAt(int x, int z)
 
 	sf::Color colour = BlockDatabase::get().getColour(block);
 
-	//if (height < 60)
-	//	return sf::Color(0, 0, 255);
+	if (height < 60)
+		return sf::Color(0, 0, 255);
 
-	colour.r *= height;
-	colour.g *= height;
-	colour.b *= height;
+	colour.r = height * 0.8;
+	colour.b = height * 0.8;
 
 	return colour;
 }
 
 void WorldTerrain::setupGenerators()
 {
-	_mainHeightmap.SetFrequency(1000);
+
 }
