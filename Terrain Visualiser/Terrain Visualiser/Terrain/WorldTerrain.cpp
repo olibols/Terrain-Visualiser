@@ -11,14 +11,14 @@ _mainHeightmap(_seed)
 
 BlockID WorldTerrain::getBlockAt(int x, int z)
 {
-	int height = _mainHeightmap.GetValue(x, z, 0);
+	int height = (_mainHeightmap.GetValue(x, z) + 1) * 200;
 
 	return BlockID::Grass;
 }
 
 int WorldTerrain::getHeightAt(int x, int z)
 {
-	int height = ((_mainHeightmap.GetValue(x, z, 0) + 1) * 200);
+	int height = ((_mainHeightmap.GetValue(x, z) + 1) * 200);
 
 	return height;
 }
