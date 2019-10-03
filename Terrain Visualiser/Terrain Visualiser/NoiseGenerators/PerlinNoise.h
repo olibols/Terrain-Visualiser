@@ -6,17 +6,19 @@ public:
 
 	double GetValue(double x, double z);
 
-	void SetFrequency(double freq);
-
-	void SetOctaveCount(int octavecount);
-
-	void SetPersistence(int persistence);
+	inline void SetOctaves(int octaves) { _octaves = octaves; };
+	inline void SetAmplitude(int amp) { _amplitudeMultiplier = amp; };
+	inline void SetRoughtness(int roughness) { _amplitudeMultiplier = roughness; };
+	inline void SetOffset(int offset) { _offset = offset; };
 
 private:
 
-	double _frequency = 1.0;
-	int _octaveCount = 8;
-	double _persistence = 0.5;
+	int _octaves = 8;
+	int _amplitudeMultiplier = 240;
+	double _roughness = 0.48;
+	int _offset = 0;
+	int _smoothness = 190;
+
 	
 	int _seed = 100;
 };
