@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3E5246B2-858E-4D5E-9993-D805ADB2B1DE}</ProjectGuid>
     <RootNamespace>TerrainVisualiser</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,17 +129,17 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NoiseGenerators\PerlinNoise.cpp" />
+    <ClCompile Include="NoiseGenerators\FastNoise.cpp" />
+    <ClCompile Include="NoiseGenerators\NoiseWrapper.cpp" />
     <ClCompile Include="Terrain\BlockTypeDatabase.cpp" />
-    <ClCompile Include="NoiseGenerators\NoiseGenerator.cpp" />
     <ClCompile Include="Terrain\WorldTerrain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Blocks.h" />
-    <ClInclude Include="NoiseGenerators\PerlinNoise.h" />
+    <ClInclude Include="NoiseGenerators\FastNoise.h" />
+    <ClInclude Include="NoiseGenerators\NoiseWrapper.h" />
     <ClInclude Include="Terrain\BlockTypeDatabase.h" />
-    <ClInclude Include="NoiseGenerators\NoiseGenerator.h" />
     <ClInclude Include="Terrain\WorldTerrain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

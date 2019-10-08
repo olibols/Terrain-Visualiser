@@ -27,10 +27,10 @@
     <ClCompile Include="Terrain\BlockTypeDatabase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NoiseGenerators\NoiseGenerator.cpp">
+    <ClCompile Include="NoiseGenerators\FastNoise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NoiseGenerators\PerlinNoise.cpp">
+    <ClCompile Include="NoiseGenerators\NoiseWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,10 +47,10 @@
     <ClInclude Include="Terrain\BlockTypeDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NoiseGenerators\NoiseGenerator.h">
+    <ClInclude Include="NoiseGenerators\FastNoise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NoiseGenerators\PerlinNoise.h">
+    <ClInclude Include="NoiseGenerators\NoiseWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
