@@ -20,6 +20,7 @@ public:
 	void SetParams(NoiseParams& params);
 
 	double GetHeight(int x, int z);
+	double GetHeight1_0(int x, int z);
 	double GetRidgedHeight(int x, int z);
 
 	inline FastNoise& GetNoise() { return _noiseGen; };

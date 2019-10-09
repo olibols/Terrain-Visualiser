@@ -27,6 +27,11 @@ double NoiseWrapper::GetHeight(int x, int z)
 	return ((_noiseGen.GetNoise(x, z) + 1) * _params.Amplitude) + _params.Offset;
 }
 
+double NoiseWrapper::GetHeight1_0(int x, int z)
+{
+	return ((_noiseGen.GetNoise(x, z)) * _params.Amplitude);
+}
+
 double NoiseWrapper::GetRidgedHeight(int x, int z)
 {
 	return (abs(_noiseGen.GetNoise(x, z)) * _params.Amplitude) + _params.Offset;
