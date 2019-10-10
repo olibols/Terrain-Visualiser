@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "Terrain/BlockTypeDatabase.h"
 
+#include <stdio.h>
+
 Application::Application()
 {
 	imageBuffer.create(1000, 1000, sf::Color(0, 0, 0));
@@ -31,6 +33,13 @@ void Application::runLoop()
 		{
 			if (event.type == sf::Event::Closed)
 				App.close();
+			
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				sf::Vector2i position = sf::Mouse::getPosition();
+
+				printf("Height: %i \n", _worldTerrain.getHeightAt(position.x, position.y));
+			}
+
 		}
 
 		App.clear();

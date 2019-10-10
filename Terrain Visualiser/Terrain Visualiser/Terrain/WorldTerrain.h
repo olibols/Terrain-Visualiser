@@ -26,5 +26,5 @@ private:
 
 	NoiseWrapper _mainHeightmap;
 	NoiseWrapper _mountainMap;
-	NoiseWrapper _valleyMap;
+	NoiseWrapper _mountainDistributionMap;
 };

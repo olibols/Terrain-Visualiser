@@ -6,8 +6,8 @@
 
 WorldTerrain::WorldTerrain() : _seed(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())),
 _mainHeightmap(_seed),
-_mountainMap(_seed * 2),
-_valleyMap(_seed + 20)
+_mountainMap(_seed / 2),
+_mountainDistributionMap(_seed + 20)
 {
 	setupGenerators();
 }
@@ -30,11 +30,12 @@ BlockID WorldTerrain::getBlockAt(int x, int z)
 int WorldTerrain::getHeightAt(int x, int z)
 {
 	int height = _mainHeightmap.GetHeight(x, z);
-	if (height > 65) {
-		height *= _mountainMap.GetRidgedHeight(x, z);
-	}
+	int mountainHeight = abs(_mountainMap.GetHeight(x, z));
+	int distributionMap = _mountainDistributionMap.GetHeight1_0(x, z);
 
-	//height -= pow(_valleyMap.GetHeight(x, z), 3) * 100;
+	mountainHeight *= distributionMap;
+
+	height *= mountainHeight + 1;
 
 	return height;
 }
@@ -62,17 +63,13 @@ sf::Color WorldTerrain::getColourAt(int x, int z)
 void WorldTerrain::setupGenerators()
 {
 	//_mainHeightmap.SetAmplitude(500);
-	_mainHeightmap.GetNoise().SetFractalGain(0.5);
-	_mainHeightmap.GetNoise().SetFractalGain(0.3);
+	_mainHeightmap.GetNoise().SetFractalGain(0.4);
 
-	_mountainMap.SetAmplitude(2);
-	_mountainMap.SetOffset(1);
 	_mountainMap.GetNoise().SetFrequency(0.005);
 	_mountainMap.GetNoise().SetFractalOctaves(6);
-	_mountainMap.GetNoise().SetFractalGain(0.6);
+	_mountainMap.GetNoise().SetFractalGain(0.5);
 
-	_valleyMap.GetNoise().SetNoiseType(FastNoise::NoiseType::Cellular);
-	_valleyMap.GetNoise().SetCellularReturnType(FastNoise::CellularReturnType::Distance);
-	_valleyMap.SetOffset(0);
-	_valleyMap.SetAmplitude(1);
+	_mountainDistributionMap.GetNoise().SetNoiseType(FastNoise::NoiseType::PerlinFractal);
+	_mountainDistributionMap.GetNoise().SetFractalOctaves(2);
+	_mountainDistributionMap.GetNoise().SetFrequency(0.006);
 }
