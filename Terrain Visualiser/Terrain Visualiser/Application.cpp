@@ -35,7 +35,7 @@ void Application::runLoop()
 				App.close();
 			
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-				sf::Vector2i position = sf::Mouse::getPosition();
+				sf::Vector2i position = sf::Mouse::getPosition(App);
 
 				printf("Height: %i \n", _worldTerrain.getHeightAt(position.x, position.y));
 			}
