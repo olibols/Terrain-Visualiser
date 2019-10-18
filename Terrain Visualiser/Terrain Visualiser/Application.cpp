@@ -14,7 +14,7 @@ void Application::runLoop()
 
 	for(int x = 0; x < 1000; x++){
 		for (int z = 0; z < 1000; z++) {
-			imageBuffer.setPixel(x, z, _worldTerrain.getColourAt(x, z));
+			imageBuffer.setPixel(x, z, _worldTerrain.getColourAt(x * 1.5, z * 1.5));
 		}
 	}
 

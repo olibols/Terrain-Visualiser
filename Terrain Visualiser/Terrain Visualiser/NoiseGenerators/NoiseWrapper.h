@@ -9,8 +9,8 @@ struct NoiseParams {
 	float Octaves = 5;
 	float Lacunarity = 2;
 	float Gain = 0.3;
-	float Amplitude = 130;
-	float Offset = -60;
+	float Amplitude = 80;
+	float Offset = 60;
 };
 
 class NoiseWrapper {

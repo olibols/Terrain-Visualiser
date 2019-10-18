@@ -6,19 +6,18 @@
 
 WorldTerrain::WorldTerrain() : _seed(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())),
 _mainHeightmap(_seed),
-_mountainMap(_seed / 2),
-_mountainDistributionMap(_seed + 20)
+_cellHeightmap(_seed * 2)
 {
 	setupGenerators();
 }
 
 BlockID WorldTerrain::getBlockAt(int x, int z)
 {
-	int height = _mainHeightmap.GetHeight(x, z);
+	int height = getHeightAt(x, z);
 
-	if (height < 65) {
-		return BlockID::Sand;
-	}
+	//if (height < 65) {
+	//	return BlockID::Sand;
+	//}
 
 	if (height > 150) {
 		return BlockID::Snow;
@@ -30,12 +29,8 @@ BlockID WorldTerrain::getBlockAt(int x, int z)
 int WorldTerrain::getHeightAt(int x, int z)
 {
 	int height = _mainHeightmap.GetHeight(x, z);
-	int mountainHeight = abs(_mountainMap.GetHeight(x, z));
-	int distributionMap = _mountainDistributionMap.GetHeight1_0(x, z);
 
-	mountainHeight *= distributionMap;
-
-	height *= mountainHeight + 1;
+	height *= _cellHeightmap.GetHeight1_0(x, z);
 
 	return height;
 }
@@ -53,8 +48,10 @@ sf::Color WorldTerrain::getColourAt(int x, int z)
 	if (height > 130)
 		colour = BlockDatabase::get().getColour(BlockID::Snow);
 
+	//if(height < )
+
 	if (getHeightAt(x - 1, z) > height || getHeightAt(x, z -1) > height) {
-		colour.a = 220;
+		colour.a -= 30;
 	}
 
 	return colour;
@@ -65,11 +62,9 @@ void WorldTerrain::setupGenerators()
 	//_mainHeightmap.SetAmplitude(500);
 	_mainHeightmap.GetNoise().SetFractalGain(0.4);
 
-	_mountainMap.GetNoise().SetFrequency(0.005);
-	_mountainMap.GetNoise().SetFractalOctaves(6);
-	_mountainMap.GetNoise().SetFractalGain(0.5);
-
-	_mountainDistributionMap.GetNoise().SetNoiseType(FastNoise::NoiseType::PerlinFractal);
-	_mountainDistributionMap.GetNoise().SetFractalOctaves(2);
-	_mountainDistributionMap.GetNoise().SetFrequency(0.006);
+	_cellHeightmap.GetNoise();
+	_cellHeightmap.GetNoise().SetNoiseType(FastNoise::NoiseType::Cellular);
+	_cellHeightmap.GetNoise().SetCellularDistanceFunction(FastNoise::CellularDistanceFunction::Manhattan);
+	_cellHeightmap.GetNoise().SetCellularReturnType(FastNoise::CellularReturnType::CellValue);
+	_cellHeightmap.GetNoise().SetCellularJitter(0.4);
 }
