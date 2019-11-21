@@ -24,7 +24,7 @@ void NoiseWrapper::SetParams(NoiseParams & params)
 
 double NoiseWrapper::GetHeight(int x, int z)
 {
-	return ((_noiseGen.GetNoise(x, z) + 1) * _params.Amplitude) + _params.Offset;
+	return ((_noiseGen.GetNoise(x, z) + 1) * _params.Amplitude / 2) + _params.Offset;
 }
 
 double NoiseWrapper::GetHeight1_0(int x, int z)

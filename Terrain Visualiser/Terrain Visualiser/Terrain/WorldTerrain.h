@@ -25,5 +25,5 @@ private:
 	Region* _currentRegion;
 
 	NoiseWrapper _mainHeightmap;
-	NoiseWrapper _cellHeightmap;
+	NoiseWrapper _largeElevation;
 };
